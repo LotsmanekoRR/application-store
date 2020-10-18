@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet"
+		  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+		  crossorigin="anonymous">
+	<title>Title</title>
+</head>
+<body>
+<div th:insert="fragments/navbar">...</div>
+<div class="container">
+	<div class="row">
+		<div th:each="item : ${allItems}" class="item">
+			<div class="col-sm">
+				<div href="#" class="card" style="width: 18rem;">
+					<img th:src="${item.filePath}" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title"><span th:text="${item.name}"></span></h5>
+						<p class="card-text"><span th:text="${item.price}"></span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

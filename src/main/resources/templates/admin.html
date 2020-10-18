@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet"
+		  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+		  crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div th:insert="fragments/navbar">...</div>
+
+<form th:action="@{/category}" th:object="${newCategory}" method="post">
+	<input class="form-control" type="text" th:field="*{categoryName}" placeholder="Введите название категории">
+	<input type="submit" value="Submit">
+</form>
+
+<form th:action="@{/add}" th:object="${item}" method="post" enctype="multipart/form-data">
+	<input class="form-control" type="number" th:field="*{price}" placeholder="Введите начальную цену">
+	<input class="form-control" type="text" th:field="*{name}" placeholder="Введите название">
+	<input class="form-control" type="text" th:field="*{description}" placeholder="Введите описание">
+	<input class="form-control" type="file" th:field="*{file}">
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+		</div>
+		<select class="form-control" id="inputGroupSelect" th:field="*{category}">
+			<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.categoryName}">
+			</option>
+		</select>
+	</div>
+	<input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>

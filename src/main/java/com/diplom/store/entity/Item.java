@@ -5,10 +5,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity(name = "item")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Item {
 
 	@Id
@@ -23,6 +30,15 @@ public class Item {
 
 	@Column
 	private String description;
+
+	@Transient
+	private MultipartFile file;
+
+	@Column
+	private String filePath;
+
+	@ManyToOne
+	private Category category;
 
 
 }
